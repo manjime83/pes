@@ -1,0 +1,42 @@
+version: '3.7'
+
+services:
+  mysql:
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: ${PES_PASSWORD}
+      MYSQL_DATABASE: ${PES_DATABASE}
+      MYSQL_USER: ${PES_USER}
+      MYSQL_PASSWORD: ${PES_PASSWORD}
+    ports:
+      - 3306:3306
+    volumes:
+      - ./mysql:/var/lib/mysql
+
+  php:
+    build: .
+    restart: always
+    environment:
+      MYSQL_HOST: mysql
+      MYSQL_DATABASE: ${PES_DATABASE}
+      MYSQL_USER: ${PES_USER}
+      MYSQL_PASSWORD: ${PES_PASSWORD}
+    ports:
+      - 80:80
+    volumes:
+      - ./www:/var/www/html
+    links:
+      - mysql
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    restart: always
+    environment:
+      PMA_HOST: mysql
+      PMA_USER: ${PES_USER}
+      PMA_PASSWORD: ${PES_PASSWORD}
+    ports:
+      - 8080:80
+    links:
+      - mysql

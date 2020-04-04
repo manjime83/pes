@@ -1,0 +1,1 @@
+<p><a href="teacher.php">Home</a> | <a href="control.php?action=logout">Logout</a></p>

@@ -1,0 +1,26 @@
+body {
+	background-color: LightGrey;
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 10px;
+}
+h1 {
+	margin-bottom: 1px;
+}
+th {
+	background-color: DarkGray;
+}
+input, select {
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 10px;
+}
+a {
+	color: #06F;
+	text-decoration: none;
+}
+a:hover {
+	color: #09F;
+}
+img {
+	border-width: 0;
+	vertical-align: middle;
+}
